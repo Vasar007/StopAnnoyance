@@ -46,6 +46,8 @@ function removeAnnoyingElementsOnMedium(domContent) {
 
     removeFirstElementByName('l m n o p c q r s t u');
     removeFirstElementByQuery('[data-test-id="post-sidebar"]');
+    removeFirstElementByName('m om ab on oo op oq');
+    removeFirstElementByName('af ag es qm qn qo m n qp o p qq qr');
 
     console.log('Removed annoying elements successfully.');
     return document.body.innerHTML;
