@@ -1,0 +1,11 @@
+{
+    "name": "StopAnnoyance",
+    "version": "1.0",
+    "description": "Extension to Google Chrome that can remove annoying elements from web pages.",
+    "permissions": ["storage"],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "manifest_version": 2
+}
