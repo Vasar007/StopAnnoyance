@@ -21,3 +21,7 @@ I use this extension to remove really annoying elements from web pages. Now exte
 ## Installation
 
 This extension has not published in Chrome Web Store yet. But you can download repository and load extension as unpacked. More information you can find [here](https://developer.chrome.com/extensions/getstarted#manifest) (there is an instruction).
+
+## License information
+
+This project is licensed under the terms of the [Apache License 2.0](LICENSE).
