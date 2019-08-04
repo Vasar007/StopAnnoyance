@@ -44,10 +44,10 @@ function removeAnnoyingElementsOnMedium(domContent) {
     console.log(document.body);
     console.log('You are on Medium. Removing annoying elements.');
 
-    removeFirstElementByName('l m n o p c q r s t u');
-    removeFirstElementByQuery('[data-test-id="post-sidebar"]');
-    removeFirstElementByName('m om ab on oo op oq');
-    removeFirstElementByName('af ag es qm qn qo m n qp o p qq qr');
+    removeFirstElementByName('l m n o p c q r s t u'); // Top panel.
+    removeFirstElementByQuery('[data-test-id="post-sidebar"]'); // Left-side panel with description.
+    removeFirstElementByName('m om ab on oo op oq'); // Down panel with registration suggestion.
+    removeFirstElementByName('af ag es qm qn qo m n qp o p qq qr'); // Popup fullscreen window.
 
     console.log('Removed annoying elements successfully.');
     return document.body.innerHTML;
