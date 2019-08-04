@@ -1,12 +1,19 @@
 'use strict';
 
-let removeAnnoyingElements = document.getElementById('removeAnnoyingElements');
+const greenColor = '#3aa757';
+const redColor = '#e8453c';
 
-chrome.storage.sync.get('color', (data) => {
-    removeAnnoyingElements.style.backgroundColor = data.color;
-    removeAnnoyingElements.setAttribute('value', data.color);
+function changeButtonColor(button, color) {
+    button.style.backgroundColor = color;
+    button.setAttribute('value', color);
     console.log('Set color value to button and updated button color itself.');
-});
+}
+
+function saveColorToStorage(newColor) {
+    chrome.storage.sync.set({color: newColor}, () => {
+        console.log('color is ' + newColor + '.');
+    });
+}
 
 function removeAnnoyingElementsOnMedium(domContent) {
     function removeElementById(elementId) {
@@ -53,7 +60,7 @@ function removeAnnoyingElementsOnMedium(domContent) {
     return document.body.innerHTML;
 }
 
-function defineWebSite(tabs) {
+function determineWebSite(tabs) {
     // Regex-pattern to check URLs against.
     // It matches URLs like: http[s]://[...]medium.com[...]
     const urlRegex = /^https?:\/\/(?:[^./?#]+\.)?medium\.com/;
@@ -78,8 +85,18 @@ function defineWebSite(tabs) {
     );
 }
 
+let removeAnnoyingElements = document.getElementById('removeAnnoyingElements');
+
+chrome.storage.sync.get('color', (data) => {
+    changeButtonColor(removeAnnoyingElements, data.color);
+});
+
 removeAnnoyingElements.onclick = (element) => {
     console.log("Popup DOM fully loaded and parsed.");
 
-    chrome.tabs.query({active: true, currentWindow: true}, defineWebSite);
+    changeButtonColor(removeAnnoyingElements, redColor);
+    chrome.tabs.query({active: true, currentWindow: true}, determineWebSite);
+    changeButtonColor(removeAnnoyingElements, greenColor);
+    // TODO: save progress to local storage and set button color depend on it
+    // (but need to process all cases: page reloading, close and open page etc.).
 };
