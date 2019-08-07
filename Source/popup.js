@@ -54,7 +54,7 @@ function removeAnnoyingElementsOnMedium(domContent) {
     removeFirstElementByName('l m n o p c q r s t u'); // Top panel.
     removeFirstElementByQuery('[data-test-id="post-sidebar"]'); // Left-side panel with description.
     removeFirstElementByName('m om ab on oo op oq'); // Down panel with registration suggestion.
-    removeFirstElementByName('af ag es qm qn qo m n qp o p qq qr'); // Popup fullscreen window.
+    removeFirstElementByQuery('[tabindex="-1"]'); // Popup fullscreen window.
 
     console.log('Removed annoying elements successfully.');
     return document.body.innerHTML;
@@ -95,7 +95,7 @@ removeAnnoyingElements.onclick = (element) => {
     console.log("Popup DOM fully loaded and parsed.");
 
     changeButtonColor(removeAnnoyingElements, redColor);
-    chrome.tabs.query({active: true, currentWindow: true}, determineWebSite);
+    chrome.tabs.query({ active: true, currentWindow: true }, determineWebSite);
     changeButtonColor(removeAnnoyingElements, greenColor);
     // TODO: save progress to local storage and set button color depend on it
     // (but need to process all cases: page reloading, close and open page etc.).

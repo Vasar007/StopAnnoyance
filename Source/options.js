@@ -8,7 +8,7 @@ const blueColor = '#4688f1';
 const buttonColors = [greenColor, redColor, yellowColor, blueColor];
 
 function saveColorToStorage(newColor) {
-    chrome.storage.sync.set({color: newColor}, () => {
+    chrome.storage.sync.set({ color: newColor }, () => {
         console.log('color is ' + newColor + '.');
     });
 }
